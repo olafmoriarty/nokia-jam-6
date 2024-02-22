@@ -1,0 +1,105 @@
+:root {
+	--dark-color: #43523d;
+	--light-color: #c7f0d8;
+	--phone-color: #6687ba;
+	--pixel-size: 5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--phone-color);
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: calc(100svh - 1rem);
+	margin: .5rem auto;
+}
+
+.game-display {
+	background: var(--light-color);
+	width: calc( var(--pixel-size) * 84px );
+
+	height: calc( var(--pixel-size) * 48px );
+	display: block;
+	margin: 0 auto;
+	image-rendering: pixelated;
+	box-sizing: content-box;
+	border: inset 3px;
+}
+
+.hidden-input {
+	font-size: 1px;
+	max-height: 1px;
+	border: none;
+	opacity: 0;
+}
+
+.keypad {
+	width: 420px;
+	max-width: calc(100% - 1rem);
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: .5rem 1rem;
+}
+
+.keypad button {
+	display: block;
+	padding: .25rem;
+}
+
+.keypad button:active {
+	background: #ffffbb;
+}
+.keypad button .number {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.keypad button .letters {
+	font-size: .75rem;
+	font-style: italic;
+	margin-top: .25rem;
+}
+
+.keypad button:nth-child(3n + 1) {
+	border-radius: 40% 60%;
+}
+.keypad button:nth-child(3n + 2) {
+	border-radius: 50%;
+}
+.keypad button:nth-child(3n + 3) {
+	border-radius: 60% 40%;
+}
+
+@media screen and (max-width: 428px) {
+	:root {
+		--pixel-size: 4;
+	}
+}
+
+@media screen and (max-width: 344px) {
+	:root {
+		--pixel-size: 3;
+	}
+}
+
+@media screen and (max-width: 260px) {
+	:root {
+		--pixel-size: 2;
+	}
+}
+
+@media screen and (max-width: 176px) {
+	:root {
+		--pixel-size: 1;
+	}
+}
