@@ -4,6 +4,16 @@ INCLUDE restaurant.ink
 INCLUDE cop.ink
 INCLUDE inventory.ink
 INCLUDE kitchen.ink
+INCLUDE apartment.ink
+INCLUDE dishwasher.ink
+INCLUDE chef.ink
+INCLUDE wife.ink
+INCLUDE freezer.ink
+
+
+
+
+
 
 
 

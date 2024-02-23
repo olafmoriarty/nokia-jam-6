@@ -2,6 +2,9 @@
 
 * [LOOK]
 The kitchen looked 
-TODO:
+TODO: kitchen
+
+* [TALK TO DISHWASHER]
+TODO: Talk to dishwasher
 
 - ->kitchen
