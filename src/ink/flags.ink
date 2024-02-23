@@ -1,3 +1,3 @@
 LIST Inventory = napkin, photos, water, soap
 
-LIST Knowledge = fight, soap
+LIST Knowledge = fight, phonecall

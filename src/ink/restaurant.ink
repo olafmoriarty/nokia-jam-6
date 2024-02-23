@@ -1,7 +1,18 @@
 == restaurant
 
-<-inv( ->restaurant )
+{dishwasher && wife:
+    As I entered the restaurant, a woman came in.
+    "Who are you?"
+    "I'm Aspen. The chef. You're cops?"
+    "Glad you could come."
+    "You need to talk to me?"
+    "That would be great. Why don't you sit down? I'll be with you shortly."
+    She sat down at a table and started scrolling social media on her phone.
+}
+->options
 
+= options
+<-inv( ->restaurant )
 + [LOOK]
 The room I had entered was a large restaurant space.
 Chairs and tables were neatly placed everywhere.
@@ -51,6 +62,10 @@ The napkins of Snow's Ice Cream Parlor are pink and light green, with the restau
 The letters "WC" were printed on the sign hanging from the ceiling.
 It points towards a door in the back of the room.
 
++ {dishwasher && wife} [LOOK AT CHEF\|LOOK AT ASPEN]
+The chef was a woman in her late thirties.
+She sat by a table, scrolling her phone.
+
 + [GO OUT\|GO OUTSIDE\|LEAVE]
 I left the restaurant.
 ->outside
@@ -63,6 +78,7 @@ I strolled into the kitchen.
 TODO: Restroom
 
 + [GO UPSTAIRS\|GO STAIRS\|GO UP\|CLIMB STAIRS]
-TODO: Upstairs
+I climbed the stairs up to Snow's private apartment, and opened the door.
+->apartment
 
 - ->restaurant

@@ -31,9 +31,9 @@ He checked his notepad.
 "And who owns a key?"
 "Only the victim himself."
 "Hmm."
-"The key wasn't on him when he died. His wife found it in his desk drawer."
-"She found the body?"
-"Yes. This morning. He'd been in there all night."
+"The key wasn't on him when he died. It was in his desk drawer."
+"Who found the body?"
+"The dishwasher. This morning. He'd been in there all night."
 "He froze to death?"
 "Yeah."
 "This was in the kitchen?"
@@ -49,7 +49,7 @@ He checked his notepad.
 "How many employees?"
 "Two people. A chef, and a dishwasher."
 "Where can I find them?"
-"His wife Crystal is in the apartment upstairs. The dishwasher is in the kitchen. The chef is on his way."
+"His wife Crystal is in the apartment upstairs. The dishwasher is in the kitchen. The chef is on her way."
 "Thanks."
 
 

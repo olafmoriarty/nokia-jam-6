@@ -44,7 +44,7 @@ TODO dishwasher topics
 "I went straight to bed. But I talked to a neighbor when I got home."
 "Thanks."
 
-+ [SNOW\|NICK\|NICK SNOW\|VICTIM]
++ [VICTIM\|SNOW\|NICK\|NICK SNOW]
 "What was Mr. Snow like?"
 "He was a cool guy. I mean, he hired me."
 "Okay?"
@@ -70,7 +70,7 @@ TODO dishwasher topics
 "I couldn't get into the kitchen."
 {Knowledge !? fight: 
 	I should REALLY ask him about last night.
-else:
+- else:
 	"Hmm..."
 }
 

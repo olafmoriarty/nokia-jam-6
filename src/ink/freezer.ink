@@ -2,6 +2,8 @@
 
 TODO Complete freezer
 
+<-inv( ->freezer )
+
 + [LEAVE]
 ->kitchen
 
