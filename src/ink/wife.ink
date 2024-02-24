@@ -60,6 +60,7 @@ It would be a good idea to ask for her alibi, too.
 "Were you having an affair?"
 "Why are you asking?"
 I laid out the photos I'd found on the table in front of her.
+~ Inventory -= photos
 "Someone photographed you."
 "Oh."
 "Can you explain these photos?"
@@ -88,12 +89,13 @@ The recording of Crystal's voice then continued to list off their plans for the 
 "Are you in bed yet?"
 "Nah, just tidying up a bit in the kitchen. Huh. That's odd..."
 "What's odd?"
-"This bar of soap. It looks like someone has..."
+"This bar of soap. It looks like someone has..." #sound
 "?"
 "Someone's coming. I have to go. See you tomorrow."
-~ Knowledge += soap
+~ Knowledge += phonecall
 The recording ended.
-"Satisfied?"
+"When was this?"
+"Around midnight, I'd say. Satisfied?"
 I nodded. "Thanks."
 
 + [BYE\|LEAVE]

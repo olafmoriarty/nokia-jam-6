@@ -18,6 +18,7 @@ function App() {
 	const [showInput, setShowInput] = useState(false);
 	const [displayCache, setDisplayCache] = useState('');
 	const [previousCommand, setPreviousCommand] = useState(undefined as string|undefined);
+	const [audioPlayer] = useState(new Audio());
 
 	const cursorTimeout = useRef(undefined as undefined|number); 
 
@@ -44,10 +45,17 @@ function App() {
 		}
 	}, [currentKey, presses]);
 
+	const playSound = (url : string) => {
+		audioPlayer.src = url;
+		audioPlayer.oncanplay = () => {
+			audioPlayer.play();
+		}
+	}
+
 	const parseText = (text : string) => {
-		return text.trim().split(' ').map(word => {
+		return text.trim().replace('PICK UP', 'GET').split(' ').map(word => {
 			const w = word.toUpperCase();
-			if (['THE', 'TO', 'AT', 'ON'].includes(w)) {
+			if (['THE', 'TO', 'AT', 'ON', 'A', 'AN', 'INTO', 'WITH'].includes(w)) {
 				return '';
 			}
 			if (w === 'EXAMINE' || w === 'SEARCH' || w === 'L') {
@@ -116,6 +124,7 @@ function App() {
 				}
 
 				setDisplayText('Invalid command. Type HELP to show valid commands.');
+				playSound('./sounds/odd1.wav');
 			}
 			return;
 		}
@@ -131,6 +140,11 @@ function App() {
 	
 			setDisplayText(text);
 			setShowInput( ink.currentChoices.length ? true : false );
+
+			if (ink.currentTags?.includes('sound')) {
+				playSound('./sounds/odd2.wav');
+			}
+
 		}
 	}
 

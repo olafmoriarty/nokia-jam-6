@@ -12,7 +12,7 @@ The large double door leading inside Snow's Ice Cream Parlor had frosted glass, 
 Yellow police tape marked "DO NOT CROSS" covered the door.
 
 + [LOOK AT TRASHCAN\|LOOK AT TRASH]
-The trashcan contained an assortment of used plastic spoons. And what looked like a note.
+The trashcan contained an assortment of used plastic spoons.
 
 + [LOOK AT GROUND\|LOOK AT STREET]
 I watched where I was putting my feet carefully.
@@ -47,7 +47,7 @@ Soon, a young cop opened the door.
 "It's clo... Ah. You're Detective Addison Barsk?"
 "Yup. That's me."
 "Good to see you. Please come inside."
-I entered the restaurant.
+I entered the restaurant. #sound
 ->restaurant
 
 - ->outside

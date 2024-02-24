@@ -8,8 +8,6 @@ Finding out more about him would also be a good idea.
 
 = talk
 
-TODO dishwasher topics
-
 + [DAN\|DANIEL\|YOU\|YOURSELF\|DISHWASHER]
 "Who are you?"
 "Daniel Jones. I wash the dishes here."
@@ -26,7 +24,7 @@ TODO dishwasher topics
 "Normally?"
 "Yeah... I didn't want to go to the kitchen last night."
 "Why not?"
-"Because of the fight."
+"Because of the fight." #sound
 ~ Knowledge += fight
 "What fight?"
 "Nick was yelling at Aspen. The chef."

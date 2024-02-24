@@ -10,15 +10,8 @@ INCLUDE chef.ink
 INCLUDE wife.ink
 INCLUDE freezer.ink
 INCLUDE climax.ink
-
-
-
-
-
-
-
-
-
+INCLUDE restroom.ink
+INCLUDE ending.ink
 
 
 ->start
@@ -35,5 +28,4 @@ I parked outside the front door and stepped out of the car.
 == game_end
 THE END #image
 Thanks for playing!
-Press \# to play again.
-->start
+->END

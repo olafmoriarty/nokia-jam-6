@@ -1,12 +1,13 @@
 == restaurant
 
-{dishwasher && wife:
+{(dishwasher && wife) && Knowledge !? chefishere:
     As I entered the restaurant, a woman came in.
     "Who are you?"
     "I'm Aspen. The chef. You're cops?"
     "Glad you could come."
     "You need to talk to me?"
     "That would be great. Why don't you sit down? I'll be with you shortly."
+    ~ Knowledge += chefishere
     She sat down at a table and started scrolling social media on her phone.
 }
 ->options
@@ -37,6 +38,9 @@ I have a murder to solve!
 + [TALK TO COP]
 ->cop
 
++ {dishwasher && wife} [TALK TO ASPEN\|TALK TO CHEF\|TALK TO WOMAN]
+->chef
+
 + (counter) [LOOK AT COUNTER]
 The counter is empty except for a napkin holder and a cash register.
 
@@ -54,7 +58,7 @@ The napkins of Snow's Ice Cream Parlor are pink and light green, with the restau
 {Inventory ? napkin:
     I already have one.
 - else:
-    I grabbed a napkin and put it in my pocket.
+    I grabbed a napkin and put it in my pocket. #sound
     ~ Inventory += napkin
 }
 
@@ -75,7 +79,8 @@ I strolled into the kitchen.
 ->kitchen
 
 + [GO TO RESTROOM\|GO TO TOILET\|GO TO BATHROOM\|GO TO RESTROOMS\|GO TO TOILETS\|GO TO BATHROOMS]
-TODO: Restroom
+I opened the door to the restroom and walked inside.
+->restroom
 
 + [GO UPSTAIRS\|GO STAIRS\|GO UP\|CLIMB STAIRS]
 I climbed the stairs up to Snow's private apartment, and opened the door.

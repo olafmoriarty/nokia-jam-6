@@ -17,5 +17,9 @@ A woman in her late twenties, wearing a long, black dress, sat on the sofa.
 + [TALK TO WIFE\|TALK TO WIDOW\|TALK TO CRYSTAL]
 ->wife
 
++ [GO DOWNSTAIRS\|GO BACK\|GO DOWN\|GO TO RESTAURANT\|LEAVE]
+I walked down the stairs again.
+->restaurant
+
 - -> apartment
 

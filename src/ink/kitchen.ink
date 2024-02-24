@@ -7,11 +7,19 @@
 The kitchen looked like any other restaurant kitchen.
 Counters. Utensils. Shelves. A Fridge.
 A large shelf was full of various syrups.
-A young man was doing the dishes at a large sink.
+{Knowledge !? phonecall:
+    A young man was doing the dishes at a large sink.
+- else:
+    Dan wasn't here right now. This was my chance to examine that sink.
+}
 On the back wall a door led inside a big walk-in freezer.
 
 + [TALK TO DISHWASHER\|TALK TO DAN\|TALK TO DANIEL\|TALK TO MAN]
-->dishwasher
+{Knowledge !? phonecall:
+    ->dishwasher
+- else:
+    He's not here right now.
+}
 
 + [LOOK AT COUNTER\|LOOK AT COUNTERS]
 The counters looked clean and tidy.
@@ -37,9 +45,13 @@ The labels had no names, only numbers.
 I had no use for it, so I decided not to.
 
 + [LOOK AT DISHWASHER\|LOOK AT MAN\|LOOK AT DAN\|LOOK AT DANIEL]
-A young man washing dishes.
-What a strange thing to do at a crime scene.
-I guess the cop told him it was okay.
+{Knowledge !? phonecall:
+    A young man washing dishes.
+    What a strange thing to do at a crime scene.
+    I guess the cop told him it was okay.
+- else:
+    He's not here right now. This is my chance to check out that soap.
+}
 
 + (sink) [LOOK AT SINK]
 A large sink, full of dishwater and dirty dishes.
