@@ -49,7 +49,7 @@ That's right, Aspen said there was some chemical in this water that made it supe
 
 + {Knowledge ? freezerLocked && Inventory ? (water, soap)} [USE WATER WITH SOAP\|USE SOAP WITH WATER]
 I pulled out the soap, filled the outline with water from my water bottle, and it froze immediately.
-I now had a key made of ice. Hopefully, it would get me out of here.
+I now had a key made of ice. Hopefully, it would get me out of here. #sound
 ~ Inventory += key
 
 + {Inventory ? key} [UNLOCK DOOR\|OPEN DOOR\|USE KEY]

@@ -10,12 +10,13 @@ import './App.css';
 
 function App() {
 	const [ink, setInk] = useState(undefined as undefined | InstanceType<typeof Story>); 
+	const [emptyInk, setEmptyInk] = useState(''); 
 	const [image, setImage] = useState(undefined as string|undefined);
 	const [inputSentence, setInputSentence] = useState('');
 	const [currentKey, setCurrentKey] = useState(undefined as Key|undefined);
 	const [presses, setPresses] = useState(0);
 	const [displayText, setDisplayText] = useState("");
-	const [showInput, setShowInput] = useState(false);
+	const [showInput, setShowInput] = useState(true);
 	const [displayCache, setDisplayCache] = useState('');
 	const [previousCommand, setPreviousCommand] = useState(undefined as string|undefined);
 	const [audioPlayer] = useState(new Audio());
@@ -24,11 +25,24 @@ function App() {
 
 	useEffect(() => {
 		const inkFile = new Story(inkJson);
+		setEmptyInk(inkFile.state.toJson());
+		if (localStorage.getItem('coldCaseSave')) {
+			const savefile = JSON.parse( localStorage.getItem('coldCaseSave') || '') as Save;
+			inkFile.state.LoadJson(savefile.ink);
+			setDisplayText(savefile.displayText);
+			setDisplayCache(savefile.displayCache);
+			setShowInput( savefile.displayCache || !inkFile.currentChoices.length ? false : true );
+			if (inkFile.currentTags?.includes('image')) {
+				setImage(savefile.displayText.trim());
+			}
+		}
 		setInk(inkFile); 
 	}, []);
 
 	useEffect(() => {
-		progress();
+		if (!displayText) {
+			progress();
+		}
 	}, [ink]);
 
 	useEffect(() => {
@@ -44,6 +58,20 @@ function App() {
 			clearTimeout(timeout);
 		}
 	}, [currentKey, presses]);
+
+	const saveGame = (text? : string, inkfile? : string, cache? : string) => {
+		if (!ink) {
+			return;
+		}
+		const oldSave = localStorage.getItem('coldCaseSave') ? JSON.parse( localStorage.getItem('coldCaseSave') || '') as Save : { ink: ink.state.toJson(), displayText: displayText };
+
+		const newSave = {
+			ink: inkfile || oldSave.ink,
+			displayText: text === undefined ? oldSave.displayText : text,
+			displayCache: cache || '',
+		}
+		localStorage.setItem('coldCaseSave', JSON.stringify(newSave));
+	}
 
 	const playSound = (url : string) => {
 		audioPlayer.src = url;
@@ -70,17 +98,21 @@ function App() {
 			if (w === 'SPEAK' || w === 'T') {
 				return 'TALK';
 			}
+			if (w === 'U') {
+				return 'USE';
+			}
 			if (w === 'I') {
 				return 'INVENTORY';
 			}
 
 			return w;
-		}).join(' ').replace(/ +/, ' ').trim();
+		}).join(' ').replace(/ +/g	, ' ').trim();
 	}
 
 	const updateDisplayCache = (text : string) => {
 		setDisplayCache(text || '');
 		if (text) {
+			saveGame(undefined, undefined, text);
 			setShowInput(false);
 		}
 	}
@@ -98,25 +130,35 @@ function App() {
 			setDisplayCache('');
 			setDisplayText(displayCache);
 			setShowInput( ink.currentChoices.length ? true : false );
+			saveGame(displayCache, undefined, '');
 			return;
 		}
 
 		if (!ink.canContinue) {
 			if (input && ink.currentChoices.length) {
 				setPreviousCommand( input );
-				if (parseText(input) === 'HELP') {
+				if (parseText(input) === 'HELP' || parseText(input) === 'H') {
 					const commandList = ink.currentChoices.map(el => el.text.split('|')[0]).join(', ').toLowerCase();
 					setDisplayText(commandList);
 					return;
 				}
 
+				if (parseText(input) === 'RESTART') {
+					ink.state.LoadJson(emptyInk);
+					progress();
+					return;
+				}
+
 				for (let i = 0; i < ink.currentChoices.length; i++) {
+
+					ink.currentChoices[i].text.split('|').forEach(el => console.log(parseText(el)));
 
 					if (ink.currentChoices[i].text.split('|').map(el => parseText(el)).includes(parseText(input))) {
 						ink.ChooseChoiceIndex(i);
 						const text = ink.Continue();
 						if (text !== null) {
 							setDisplayText(text);
+							saveGame(text, ink.state.toJson());
 						}
 						setShowInput( ink.currentChoices.length ? true : false );
 						return;
@@ -125,6 +167,12 @@ function App() {
 
 				setDisplayText('Invalid command. Type HELP to show valid commands.');
 				playSound('./sounds/odd1.wav');
+			}
+			if (!ink.currentChoices.length) {
+				// Game is over
+				ink.state.LoadJson(emptyInk);
+				progress();
+				return;
 			}
 			return;
 		}
@@ -140,6 +188,8 @@ function App() {
 	
 			setDisplayText(text);
 			setShowInput( ink.currentChoices.length ? true : false );
+
+			saveGame(text, ink.state.toJson());
 
 			if (ink.currentTags?.includes('sound')) {
 				playSound('./sounds/odd2.wav');
@@ -226,5 +276,11 @@ function App() {
 }
 
 type Key = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "*" | "0" | "#" | "Enter" | "Backspace";
+
+type Save = {
+	ink : string,
+	displayText : string,
+	displayCache : string,
+}
 
 export default App;

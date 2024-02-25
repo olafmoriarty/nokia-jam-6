@@ -27,5 +27,4 @@ I parked outside the front door and stepped out of the car.
 
 == game_end
 THE END #image
-Thanks for playing!
 ->END

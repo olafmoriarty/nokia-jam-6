@@ -1,5 +1,7 @@
 == restroom
 
+<-inv( ->freezer )
+
 + [LOOK]
 The unisex restroom had six stalls.
 Each stall had a toilet in it.

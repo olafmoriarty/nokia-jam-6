@@ -2,4 +2,6 @@
 
 A game made for Nokia 3310 Jam 6.
 
-Written in React.
+Code written in React/Typescript. Narrative written in Ink.
+
+[Play the game here](https://olafmoriarty.itch.io/cold-case)

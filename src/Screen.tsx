@@ -4,6 +4,7 @@ import lightLetterSrc from './assets/classic_light.png';
 import buttonSrc from './assets/hash-button.png';
 import letterPositionsJSON from './letterPositions.json';
 import titleScreen from './assets/title-screen.png';
+import endScreen from './assets/end-screen.png';
 
 const Screen = ( props : Props ) => {
 	const { displayText, inputText, showInput, updateDisplayCache, image } = props;
@@ -18,6 +19,7 @@ const Screen = ( props : Props ) => {
 
 	const images = {
 		'TITLE': titleScreen,
+		'THE END': endScreen,
 	} as { [key : string] : string }
 
 	useEffect(() => {
@@ -26,7 +28,7 @@ const Screen = ( props : Props ) => {
 
 	useEffect(() => {
 		updateInput( inputText );
-	}, [ inputText, showInput ]);
+	}, [ inputText, showInput, displayText ]);
 
 
 
@@ -57,7 +59,7 @@ const Screen = ( props : Props ) => {
 
 	useEffect(() => {
 		updateButtonAnimation();
-	}, [buttonAnimationPressed]);
+	}, [buttonAnimationPressed, showInput]);
 
 	const animateProgressIcon = (time : number) => {
 		if (startTimeRef.current === undefined) {
